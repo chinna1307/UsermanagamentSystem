@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const author = document.getElementById('book-author').value.trim();
             const isbn = document.getElementById('book-isbn').value.trim();
 
-            if (title && author && isbn && isValidISBN(isbn)) {
+            if (title && author && isbn) { // Removed isValidISBN check
                 const books = JSON.parse(localStorage.getItem('books')) || [];
                 if (!books.some(book => book.isbn === isbn)) {
                     books.push({ title, author, isbn, status: 'available' });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Book with this ISBN already exists!');
                 }
             } else {
-                alert('Invalid ISBN format or missing fields!');
+                alert('Please fill all fields!');
             }
         });
     }
@@ -79,8 +79,4 @@ function loadBooks() {
     }
 }
 
-function isValidISBN(isbn) {
-    // Basic ISBN-10 or ISBN-13 validation (simplified)
-    isbn = isbn.replace(/-/g, '');
-    return (isbn.length === 10 || isbn.length === 13) && /^\d+$/.test(isbn);
-}
+// Removed isValidISBN function since it's no longer needed
