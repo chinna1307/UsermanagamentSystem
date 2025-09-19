@@ -1,0 +1,362 @@
+/* =========================
+  Root Variables: Cyberpunk Neon Theme
+========================= */
+:root {
+    --primary-color: #00f5c3; /* Electric Cyan */
+    --secondary-color: #ff2a6d; /* Vibrant Magenta */
+    --background-color: #0a0a1a; /* Deep Space Blue */
+    --surface-color: rgba(20, 20, 40, 0.7); /* Semi-transparent dark blue */
+    --text-color: #e0e0e0; /* Off-white for readability */
+    --glow-shadow-primary: rgba(0, 245, 195, 0.4);
+    --glow-shadow-secondary: rgba(255, 42, 109, 0.4);
+    --dark-shadow: rgba(0, 0, 0, 0.5);
+    --border-radius-sm: 10px;
+    --border-radius-md: 20px;
+    --glass-blur: blur(10px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    background-image: 
+        linear-gradient(rgba(0, 245, 195, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 195, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* =========================
+  Keyframe Animations
+========================= */
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 10px var(--glow-shadow-primary), 0 0 20px var(--glow-shadow-secondary); }
+    50% { text-shadow: 0 0 20px var(--glow-shadow-primary), 0 0 40px var(--glow-shadow-secondary); }
+    100% { text-shadow: 0 0 10px var(--glow-shadow-primary), 0 0 20px var(--glow-shadow-secondary); }
+}
+
+@keyframes slideInLux {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================
+  Header and Navigation
+========================= */
+header {
+    padding: 2rem 3rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(10, 10, 26, 0.8), transparent);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInLux 0.8s ease-out;
+    border-bottom: 1px solid rgba(0, 245, 195, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+nav ul {
+    margin: 1.2rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--primary-color);
+    background: rgba(0, 245, 195, 0.1);
+    box-shadow: 0 0 15px var(--glow-shadow-primary);
+    border-color: rgba(0, 245, 195, 0.2);
+}
+
+/* =========================
+  Main Content Area
+========================= */
+main {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 3rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 0 30px var(--dark-shadow);
+    border: 1px solid rgba(0, 245, 195, 0.3);
+    animation: slideInLux 1s ease-out 0.2s;
+    animation-fill-mode: backwards;
+}
+
+main section {
+    margin-bottom: 4rem;
+}
+
+main h2 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px var(--glow-shadow-primary);
+}
+
+main h3 {
+    font-size: 1.6rem;
+    margin-top: 3.5rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--glow-shadow-secondary);
+}
+
+/* =========================
+  Stats Cards
+========================= */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.stats div {
+    padding: 2rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 15px var(--dark-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(0, 245, 195, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.stats div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px var(--glow-shadow-primary);
+}
+
+.stats div:hover::before {
+    transform: translateX(100%);
+}
+
+.stats div h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.stats div span {
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: block;
+    color: var(--text-color);
+}
+
+/* =========================
+  Generic Form Styles
+========================= */
+.data-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin: 0 auto 3.5rem;
+    max-width: 600px;
+    align-items: center;
+}
+
+.data-form input, .data-form select {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid rgba(0, 245, 195, 0.3);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+    background: rgba(10, 10, 26, 0.8);
+    box-shadow: inset 0 0 10px var(--dark-shadow);
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.data-form input::placeholder { color: #888; }
+
+.data-form input:focus, .data-form select:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--glow-shadow-primary);
+    border-color: var(--primary-color);
+    background: rgba(20, 20, 40, 0.8);
+}
+
+.data-form button {
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+    color: #0a0a1a;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 0 15px var(--glow-shadow-secondary);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.data-form button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px var(--glow-shadow-primary), 0 0 15px var(--glow-shadow-secondary);
+}
+
+/* =========================
+  Generic Table Styles
+========================= */
+.table-container { overflow-x: auto; }
+
+.data-list {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    margin-top: 1rem;
+}
+
+.data-list thead th {
+    color: var(--text-color);
+    font-weight: 600;
+    text-align: left;
+    padding: 0 1.5rem 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.data-list td {
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.data-list tbody tr {
+    background: rgba(20, 20, 40, 0.5);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 0 10px var(--dark-shadow);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    animation: slideInLux 0.5s ease-out backwards;
+}
+
+.data-list tbody tr:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 245, 195, 0.1);
+    box-shadow: 0 0 20px var(--glow-shadow-primary);
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    box-shadow: 0 0 10px var(--glow-shadow-secondary);
+    transition: all 0.2s ease-in-out;
+    background-color: transparent;
+}
+.action-btn:hover { 
+    transform: scale(1.1);
+    background-color: var(--secondary-color);
+    color: #0a0a1a;
+}
+
+/* =========================
+  Footer
+========================= */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: #888;
+    font-size: 0.9rem;
+    background: transparent;
+}
+
+/* =========================
+  Responsive Design
+========================= */
+@media (max-width: 768px) {
+    header { padding: 1rem 1.5rem; }
+    header h1 { font-size: 2rem; }
+    nav ul { gap: 0.5rem; }
+    nav ul li a { padding: 0.5rem 1rem; }
+    main { margin: 1rem; padding: 1.5rem; }
+    .stats { grid-template-columns: 1fr; }
+}

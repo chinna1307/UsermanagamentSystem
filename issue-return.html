@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Issue/Return</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="issue-return.html" class="active">Issue/Return</a></li>
+                <li><a href="reports.html">Reports</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="issue-return">
+            <h2>Issue or Return a Book</h2>
+            <form class="data-form" id="issue-return-form">
+                <input type="text" id="issue-isbn" placeholder="Book ISBN" required>
+                <input type="text" id="issue-member-id" placeholder="Member ID" required>
+                <select id="issue-action" required>
+                    <option value="issue">Issue Book</option>
+                    <option value="return">Return Book</option>
+                </select>
+                <button type="submit">Process</button>
+            </form>
+            <div class="table-container">
+                <table class="data-list" id="issue-table">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Member</th>
+                            <th>Issue Date</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="issue-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Library Management System</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/issue-return.js"></script>
+</body>
+</html>

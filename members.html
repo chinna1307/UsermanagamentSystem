@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Members</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="issue-return.html">Issue/Return</a></li>
+                <li><a href="reports.html">Reports</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="members">
+            <h2>Manage Members</h2>
+            <form class="data-form" id="member-add-form">
+                <h3>Add New Member</h3>
+                <input type="text" id="member-name" placeholder="Full Name" required>
+                <input type="email" id="member-email" placeholder="Email Address" required>
+                <button type="submit">Add Member</button>
+            </form>
+            <div class="table-container">
+                <table class="data-list" id="member-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Member ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Library Management System</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/members.js"></script>
+</body>
+</html>
